@@ -166,13 +166,7 @@ class Connection:
     def get_totp(self, uuid):
         msg = {
             "action": "get-totp",
-            "uuid": uuid,
-            "keys": [
-                {
-                    "id": self.associate_id,
-                    "key": base64.b64encode(self.id_public_key._public_key).decode("utf-8")
-                }
-            ]
+            "uuid": uuid
         }
         self.send_encrypted_message(msg)
         response = self.get_encrypted_response()
